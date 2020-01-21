@@ -1,0 +1,11 @@
+query Test {
+  Store {
+    storeType
+    updated_at
+    storeName
+    storeDescription
+    created_at
+    updated_at
+  }
+}
+
