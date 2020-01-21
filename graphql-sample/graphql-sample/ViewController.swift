@@ -38,6 +38,8 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let store = self.viewModel.stores[indexPath.row]
+        print(store.storeId)
         
     }
 }

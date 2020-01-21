@@ -16,6 +16,7 @@ public final class TestQuery: GraphQLQuery {
         storeDescription
         created_at
         updated_at
+        storeId
       }
     }
     """
@@ -63,6 +64,7 @@ public final class TestQuery: GraphQLQuery {
         GraphQLField("storeDescription", type: .nonNull(.scalar(String.self))),
         GraphQLField("created_at", type: .scalar(String.self)),
         GraphQLField("updated_at", type: .scalar(String.self)),
+        GraphQLField("storeId", type: .nonNull(.scalar(String.self))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -71,8 +73,8 @@ public final class TestQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(storeType: String, updatedAt: String? = nil, storeName: String, storeDescription: String, createdAt: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Store", "storeType": storeType, "updated_at": updatedAt, "storeName": storeName, "storeDescription": storeDescription, "created_at": createdAt])
+      public init(storeType: String, updatedAt: String? = nil, storeName: String, storeDescription: String, createdAt: String? = nil, storeId: String) {
+        self.init(unsafeResultMap: ["__typename": "Store", "storeType": storeType, "updated_at": updatedAt, "storeName": storeName, "storeDescription": storeDescription, "created_at": createdAt, "storeId": storeId])
       }
 
       public var __typename: String {
@@ -126,6 +128,15 @@ public final class TestQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "created_at")
+        }
+      }
+
+      public var storeId: String {
+        get {
+          return resultMap["storeId"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "storeId")
         }
       }
     }
